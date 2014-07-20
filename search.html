@@ -31,10 +31,10 @@
     
     <table class="monster">
     <tr>
-<th>name</th>
-<th>hp</th>
-<th>atk</th>
-<th>rcv</th>
+<th><a href="" ng-click="reverse=!reverse;order('name', reverse)">name</a></th>
+<th><a href="" ng-click="reverse=!reverse;order('hp_max', reverse)">hp</a></th>
+<th><a href="" ng-click="reverse=!reverse;order('atk_max', reverse)">atk</a></th>
+<th><a href="" ng-click="reverse=!reverse;order('rcv_max', reverse)">rcv</a></th>
 </tr>
 
     <tr ng-repeat="monster in githubuser | filter:searchUser">
@@ -42,9 +42,9 @@
       <img ng-src="https://padherder.com{{monster.image60_href}}" />
       {{monster.name}}&nbsp;
 </td>
-<td>{{monster.hp_max}}</td>
-<td>{{monster.atk_max}}</td>
-<td>{{monster.rcv_max}}</td>
+<td>&nbsp;{{monster.hp_max}}&nbsp;</td>
+<td>&nbsp;{{monster.atk_max}}&nbsp;</td>
+<td>&nbsp;{{monster.rcv_max}}&nbsp;</td>
     </tr>
 
     </table>

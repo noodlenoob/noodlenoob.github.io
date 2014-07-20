@@ -13,10 +13,12 @@ var student1 = {
   lastname: 'Fernandes'
 }
 
+var reverse = false;
 
-app.controller('MainCtrl', function($scope, $http) {
+app.controller('MainCtrl', function($scope, $http, $filter) {
   $scope.searched = false;
   $scope.students = students;
+  $scope.reverse = reverse
   
   $scope.range = function(min, max, step){
     step = (step === undefined) ? 1 : step;
@@ -29,6 +31,7 @@ app.controller('MainCtrl', function($scope, $http) {
         $scope.githubuser = response.data;  
         $scope.processing = false;
         $scope.searched = true;
+        $scope.reverse = false;
   };
 
   var errorResult = function (response){
@@ -36,6 +39,8 @@ app.controller('MainCtrl', function($scope, $http) {
         $scope.processing = false;
         $scope.githubuser = null;
   };
+
+var orderBy = $filter('orderBy');
   
   $scope.search = function() {
     $scope.processing = true;
@@ -43,5 +48,7 @@ app.controller('MainCtrl', function($scope, $http) {
     .then(successresult, errorResult)
   };
   
-  
+  $scope.order = function(predicate, reverse) {
+    $scope.githubuser = orderBy($scope.githubuser, predicate, reverse);
+};
 });
