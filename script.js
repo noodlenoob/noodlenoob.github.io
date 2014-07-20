@@ -20,7 +20,7 @@ app.controller('MainCtrl', function($scope, $http, $filter) {
   $scope.students = students;
   $scope.reverse = reverse
   
-$scope.weightedStat(monster) {
+$scope.weightedStat = function (monster) {
  return (monster.hp_max/10) + (monster.atk_max/5) + (monster.rcv_max/3);
 };
   $scope.range = function(min, max, step){
