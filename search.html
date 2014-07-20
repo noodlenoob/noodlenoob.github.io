@@ -30,7 +30,7 @@
     <hr ng-show="githubuser">
     
     
-    <div ng-repeat="monster in githubuser | filter:searchUser">
+    <div ng-repeat="monster in githubuser | filter:searchUser | orderBy:atk_max:reverse">
       <img ng-src="https://padherder.com{{monster.image60_href}}" />
       {{monster.name}}&nbsp;
     </div>
