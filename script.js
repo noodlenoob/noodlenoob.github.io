@@ -21,7 +21,7 @@ app.controller('MainCtrl', function($scope, $http, $filter) {
   $scope.reverse = reverse
   
 $scope.weightedStat = function (monster) {
- return (monster.hp_max/10) + (monster.atk_max/5) + (monster.rcv_max/3);
+ return $filter('number')((monster.hp_max/10) + (monster.atk_max/5) + (monster.rcv_max/3), 2);
 };
   $scope.range = function(min, max, step){
     step = (step === undefined) ? 1 : step;
