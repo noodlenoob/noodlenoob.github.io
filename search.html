@@ -29,12 +29,25 @@
   <div ng-hide="!searched || !githubuser">
     <hr ng-show="githubuser">
     
-    
-    <div ng-repeat="monster in githubuser | filter:searchUser | orderBy:atk_max:reverse">
+    <table class="monster">
+    <tr>
+<th>name</th>
+<th>hp</th>
+<th>atk</th>
+<th>rcv</th>
+</tr>
+
+    <tr ng-repeat="monster in githubuser | filter:searchUser">
+<td>
       <img ng-src="https://padherder.com{{monster.image60_href}}" />
       {{monster.name}}&nbsp;
-    </div>
+</td>
+<td>{{monster.hp_max}}</td>
+<td>{{monster.atk_max}}</td>
+<td>{{monster.rcv_max}}</td>
+    </tr>
 
+    </table>
   </div>
 
 </body>
