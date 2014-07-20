@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+  <link data-require="bootstrap-css@3.1.1" data-semver="3.1.1" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <script data-require="angular.js@*" data-semver="1.3.0-beta.5" src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>
+  <script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <script data-require="bootstrap@*" data-semver="3.1.1" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+</head>
+
+<body ng-controller="MainCtrl" class="container">
+  <h3>PAD Monster search</h3>
+  <form>
+    <div class="form-group">
+      <input type="text" ng-model="searchUser.name" placeholder="Search for Monster" class="form-control" />
+      <br/>
+      <a ng-click="search()" class="btn btn-default">
+        <i class="glyphicon glyphicon-search" ng-class="processing: disabled"></i>
+        Search
+      </a>
+    </div>
+ 
+  </form>
+  
+  <ng-include src="'error.html'"></ng-include>
+  
+  <div ng-hide="!searched || !githubuser">
+    <hr ng-show="githubuser">
+    
+    
+    <div ng-repeat="monster in githubuser | filter:searchUser">
+      <img ng-src="https://padherder.com{{monster.image60_href}}" />
+      {{monster.name}}&nbsp;
+    </div>
+
+  </div>
+
+</body>
+
+</html>
+
+
